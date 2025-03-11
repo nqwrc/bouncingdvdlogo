@@ -26,4 +26,4 @@ This website shows the iconic DVD logo bouncing around the screen, changing colo
 
 ## License
 
-Apache License 2.0
+MIT License - See LICENSE file for details
