@@ -1,48 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bouncing DVD Logo</title>
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            background-color: #000;
-            font-family: Arial, sans-serif;
-        }
-        
-        #container {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-        }
-        
-        #dvd-logo {
-            position: absolute;
-            width: 150px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            user-select: none;
-        }
-        
-        #instructions {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            border-radius: 5px;
-        }
-    </style>
+    <title>Bouncing DVD Logo - Ultimate Edition</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="description" content="L'animazione classica del logo DVD che rimbalza, migliorata con effetti moderni e più opzioni.">
+    <meta name="theme-color" content="#000000">
 </head>
 <body>
     <div id="container">
         <div id="dvd-logo">
-            <!-- Using the default.svg content -->
             <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="263" height="117" viewBox="0 0 263 117">
                 <g id="dvd-path" fill="#FFFFFF" fill-rule="evenodd" clip-rule="evenodd">
                     <path d="M98.011 14.485c2.293 6.195 2.595 7.697 2.595 12.906 0 12.38-9.101 23.499-25.287 30.892-12.006 5.484-22.924 7.548-39.914 7.548H7.022l10.634-45.901h25.046l-7.46 31.536h6.744c19.951 0 32.994-8.427 32.994-21.318 0-10.138-9.065-15.663-25.696-15.663H18.861l3.336-14.272h97.062l13.554 42.262 34.13-42.262h57.902c13.127 0 26.473 4.917 33.408 12.311 3.987 4.251 5.772 8.848 5.772 14.867 0 12.417-9.076 23.5-25.298 30.893-12.027 5.482-22.944 7.547-39.904 7.547h-28.382l10.611-45.901h25.07l-7.461 31.536h6.72c8.709 0 15.791-1.195 20.189-3.404 7.862-3.95 12.473-10.187 12.827-17.357.511-10.317-8.848-16.219-25.719-16.219h-31.534l-57.741 65.688-23.679-65.688zm119.256 73.782c-32.262-5.295-85.217-7.175-136.448-4.845-24.932 1.134-47.611 3.902-65.208 7.958-11.236 2.591-15.401 4.911-15.401 8.58 0 4.791 8.39 7.921 31.423 11.726 31.925 5.273 85.05 7.145 136.455 4.81 25.97-1.181 45.512-3.572 65.208-7.981 11.263-2.521 15.392-4.816 15.392-8.554-.001-4.808-8.317-7.904-31.421-11.694m-150.792 21.1H63.718l-12.257-18.652h6.488l6.812 10.706 6.094-10.706h6.649zm28.78.001h-5.91v-18.652h5.91zm23.447-.001h-8.689v-18.652h8.596c6.884 0 12.582 4.188 12.582 9.246 0 5.566-5.097 9.406-12.489 9.406m40.617 0h-14.435v-18.652h14.203v3.337h-8.271v3.963h7.784v3.336h-7.784v4.704h8.502v3.312zm26.278.254c-7.755 0-13.695-4.152-13.695-9.569 0-5.434 5.917-9.569 13.695-9.569 8.131 0 13.785 3.925 13.785 9.569 0 5.639-5.663 9.569-13.785 9.569"/>
@@ -50,113 +19,120 @@
                 </g>
             </svg>
         </div>
-        <div id="instructions">Use arrow keys to control the DVD logo. Press spacebar to pause/resume.</div>
+
+        <div id="control-panel">
+            <div class="control-group">
+                <button id="pause-btn" title="Pausa/Riprendi"><i class="fas fa-pause"></i></button>
+                <button id="reset-btn" title="Reimposta"><i class="fas fa-undo"></i></button>
+                <button id="theme-btn" title="Cambia tema"><i class="fas fa-sun"></i></button>
+                <button id="colors-btn" title="Personalizza colori"><i class="fas fa-palette"></i></button>
+            </div>
+
+            <div class="control-group">
+                <div class="slider-container">
+                    <label for="speed-slider">Velocità</label>
+                    <input type="range" id="speed-slider" min="0.5" max="5" step="0.5" value="2">
+                    <span id="speed-value">2</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="slider-container">
+                    <label for="size-slider">Dimensione</label>
+                    <input type="range" id="size-slider" min="50" max="300" step="10" value="150">
+                    <span id="size-value">150</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <button id="trail-btn" class="toggle-btn" title="Attiva/Disattiva Scia"><i class="fas fa-paint-brush"></i></button>
+                <button id="multi-btn" class="toggle-btn" title="Attiva/Disattiva Modalità Multi"><i class="fas fa-clone"></i></button>
+                <button id="gravity-btn" class="toggle-btn" title="Attiva/Disattiva Gravità"><i class="fas fa-arrow-down"></i></button>
+            </div>
+
+            <div class="mode-indicator">
+                <span id="current-mode">Modalità Classica</span>
+            </div>
+            
+            <div class="settings-info">
+                <button id="save-settings-btn" title="Salva preferenze"><i class="fas fa-save"></i></button>
+                <button id="reset-settings-btn" title="Ripristina preferenze"><i class="fas fa-trash"></i></button>
+            </div>
+        </div>
+
+        <!-- Pannello di personalizzazione colori -->
+        <div id="colors-panel" class="hidden">
+            <div class="panel-header">
+                <h3>Personalizza Colori</h3>
+                <button id="close-colors-panel"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="colors-themes">
+                <h4>Temi Predefiniti</h4>
+                <div class="theme-buttons">
+                    <button class="theme-btn" data-theme="classic" title="Tema Classico">Classico</button>
+                    <button class="theme-btn" data-theme="retrowave" title="Tema Retrowave">Retrowave</button>
+                    <button class="theme-btn" data-theme="pastello" title="Tema Pastello">Pastello</button>
+                    <button class="theme-btn" data-theme="neon" title="Tema Neon">Neon</button>
+                </div>
+            </div>
+            
+            <div class="colors-custom">
+                <h4>Colori Personalizzati</h4>
+                <div class="color-slots">
+                    <div class="color-slot">
+                        <label for="color1">Colore 1</label>
+                        <input type="color" id="color1" value="#FF0000">
+                    </div>
+                    <div class="color-slot">
+                        <label for="color2">Colore 2</label>
+                        <input type="color" id="color2" value="#FF7F00">
+                    </div>
+                    <div class="color-slot">
+                        <label for="color3">Colore 3</label>
+                        <input type="color" id="color3" value="#FFFF00">
+                    </div>
+                    <div class="color-slot">
+                        <label for="color4">Colore 4</label>
+                        <input type="color" id="color4" value="#00FF00">
+                    </div>
+                    <div class="color-slot">
+                        <label for="color5">Colore 5</label>
+                        <input type="color" id="color5" value="#0000FF">
+                    </div>
+                    <div class="color-slot">
+                        <label for="color6">Colore 6</label>
+                        <input type="color" id="color6" value="#4B0082">
+                    </div>
+                    <div class="color-slot">
+                        <label for="color7">Colore 7</label>
+                        <input type="color" id="color7" value="#9400D3">
+                    </div>
+                    <div class="color-slot">
+                        <label for="color8">Colore 8</label>
+                        <input type="color" id="color8" value="#FF00FF">
+                    </div>
+                </div>
+                <div class="colors-actions">
+                    <button id="reset-colors">Reimposta Colori</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="fps-counter">FPS: <span id="fps-value">0</span></div>
+        <div id="stats">Rimbalzi: <span id="bounce-count">0</span> | Centrato: <span id="perfect-count">0</span></div>
+        
+        <div id="instructions">
+            <p><i class="fas fa-keyboard"></i> Frecce: Controlla direzione | Spazio: Pausa | R: Reimposta | T: Scia | M: Multi | G: Gravità | H: Nascondi UI</p>
+            <p><i class="fas fa-mobile-alt"></i> Scorri sullo schermo per controllare sui dispositivi mobili</p>
+        </div>
+        
+        <div id="toast" class="hidden"></div>
     </div>
 
-    <script>
-        // Get the dvd logo element and SVG path
-        const dvdLogo = document.getElementById('dvd-logo');
-        const dvdPath = document.getElementById('dvd-path');
-        const container = document.getElementById('container');
-        
-        // Set initial position and velocity
-        let x = 50;
-        let y = 50;
-        let dx = 2;
-        let dy = 2;
-        let tempDx = 0;
-        let tempDy = 0;
-        
-        const colors = [
-            '#FF0000', '#FF7F00', '#FFFF00', '#00FF00', 
-            '#0000FF', '#4B0082', '#9400D3', '#FF00FF'
-        ];
-        
-        // Set initial color
-        let colorIndex = 0;
-        dvdPath.setAttribute('fill', colors[colorIndex]);
-        
-        // Set initial size of the logo
-        const logoWidth = 150;
-        const logoHeight = 70;
-        
-        // Function to change the color
-        function changeColor() {
-            colorIndex = (colorIndex + 1) % colors.length;
-            dvdPath.setAttribute('fill', colors[colorIndex]);
-        }
-        
-        // Function to update the position
-        function updatePosition() {
-            // Get container dimensions
-            const containerWidth = container.clientWidth;
-            const containerHeight = container.clientHeight;
-            
-            // Update position based on velocity
-            x += dx;
-            y += dy;
-            
-            // Check for collision with edges
-            if (x <= 0 || x + logoWidth >= containerWidth) {
-                dx = -dx;
-                changeColor();
-                x = Math.max(0, Math.min(x, containerWidth - logoWidth));
-            }
-            
-            if (y <= 0 || y + logoHeight >= containerHeight) {
-                dy = -dy;
-                changeColor();
-                y = Math.max(0, Math.min(y, containerHeight - logoHeight));
-            }
-            
-            // Set the new position
-            dvdLogo.style.left = x + 'px';
-            dvdLogo.style.top = y + 'px';
-            
-            // Request next frame
-            requestAnimationFrame(updatePosition);
-        }
-        
-        // Start the animation
-        updatePosition();
-        
-        // Add event listener for arrow keys
-        document.addEventListener('keydown', (e) => {
-            const speed = 2;
-            
-            switch (e.key) {
-                case 'ArrowUp':
-                    dy = -Math.abs(speed);
-                    break;
-                case 'ArrowDown':
-                    dy = Math.abs(speed);
-                    break;
-                case 'ArrowLeft':
-                    dx = -Math.abs(speed);
-                    break;
-                case 'ArrowRight':
-                    dx = Math.abs(speed);
-                    break;
-                case ' ':  // Space bar to pause/resume
-                    if (dx !== 0 || dy !== 0) {
-                        // Store current direction
-                        tempDx = dx;
-                        tempDy = dy;
-                        dx = 0;
-                        dy = 0;
-                    } else {
-                        // Resume with stored direction
-                        dx = tempDx || 2;
-                        dy = tempDy || 2;
-                    }
-                    break;
-            }
-            
-            // Prevent default behavior (scrolling)
-            if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(e.key)) {
-                e.preventDefault();
-            }
-        });
-    </script>
+    <script src="preferences.js"></script>
+    <script src="color-manager.js"></script>
+    <script src="performance.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

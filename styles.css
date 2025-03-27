@@ -1,0 +1,497 @@
+/* Variabili per temi */
+:root {
+    /* Tema scuro (default) */
+    --bg-color: #000;
+    --text-color: #fff;
+    --panel-bg: rgba(0, 0, 0, 0.85);
+    --button-bg: #2a2a2a;
+    --button-hover-bg: #3a3a3a;
+    --border-color: rgba(255, 255, 255, 0.2);
+    --mode-bg: #1e1e1e;
+    --accent-color: #4CAF50;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --panel-blur: 10px;
+    --transition-speed: 0.3s;
+}
+
+/* Tema chiaro */
+[data-theme="light"] {
+    --bg-color: #f0f0f0;
+    --text-color: #333;
+    --panel-bg: rgba(255, 255, 255, 0.9);
+    --button-bg: #e0e0e0;
+    --button-hover-bg: #d0d0d0;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --mode-bg: #e5e5e5;
+    --accent-color: #2E7D32;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Clean mode - Nascondi tutti gli elementi UI */
+.clean-mode #control-panel,
+.clean-mode #fps-counter,
+.clean-mode #stats,
+.clean-mode #instructions,
+.clean-mode #colors-panel,
+.clean-mode #toast {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+/* Solo quando si passa sopra col mouse, mostra un suggerimento minimo */
+.clean-mode #container:hover::after {
+    content: "H: Mostra UI";
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Stili principali */
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: var(--bg-color);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: var(--text-color);
+    transition: background-color var(--transition-speed) ease;
+}
+
+#container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Stili per il DVD logo */
+#dvd-logo {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    will-change: transform, left, top;
+    filter: drop-shadow(0 0 5px var(--shadow-color));
+}
+
+#dvd-logo.paused {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.6)); }
+    50% { filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8)); }
+    100% { filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.6)); }
+}
+
+.trail {
+    position: absolute;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Stili per il pannello di controllo */
+#control-panel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: var(--panel-bg);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    backdrop-filter: blur(var(--panel-blur));
+    border: 1px solid var(--border-color);
+    box-shadow: 0 5px 15px var(--shadow-color);
+    z-index: 100;
+    transform: translateX(calc(100% + 20px));
+    transition: transform var(--transition-speed) ease, background-color var(--transition-speed) ease;
+}
+
+#control-panel:hover, #control-panel.expanded {
+    transform: translateX(0);
+}
+
+.control-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#control-toggle {
+    filter: drop-shadow(0 5px 5px var(--shadow-color));
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+
+button {
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:hover {
+    background-color: var(--button-hover-bg);
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.toggle-btn.active {
+    background-color: var(--accent-color);
+    box-shadow: 0 0 8px var(--accent-color);
+}
+
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 2px;
+    font-weight: 500;
+}
+
+input[type="range"] {
+    width: 100%;
+    cursor: pointer;
+    accent-color: var(--accent-color);
+    height: 6px;
+    border-radius: 3px;
+}
+
+.mode-indicator {
+    background-color: var(--mode-bg);
+    padding: 8px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12px;
+    border: 1px solid var(--border-color);
+    font-weight: 500;
+}
+
+.settings-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+/* Contatori e statistiche */
+#fps-counter, #stats {
+    position: absolute;
+    left: 20px;
+    background-color: var(--panel-bg);
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-family: monospace;
+    backdrop-filter: blur(var(--panel-blur));
+    box-shadow: 0 2px 8px var(--shadow-color);
+    z-index: 100;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+#fps-counter {
+    top: 20px;
+}
+
+#stats {
+    top: 50px;
+}
+
+/* Istruzioni */
+#instructions {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: var(--text-color);
+    background-color: var(--panel-bg);
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 80%;
+    font-size: 12px;
+    backdrop-filter: blur(var(--panel-blur));
+    box-shadow: 0 2px 8px var(--shadow-color);
+    opacity: 0.8;
+    transition: opacity var(--transition-speed) ease;
+}
+
+#instructions:hover {
+    opacity: 1;
+}
+
+#instructions p {
+    margin: 5px 0;
+}
+
+/* Toast */
+#toast {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--panel-bg);
+    color: var(--text-color);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    z-index: 1000;
+    backdrop-filter: blur(var(--panel-blur));
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transition: opacity var(--transition-speed) ease, transform 0.3s ease;
+}
+
+#toast.hidden {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+    pointer-events: none;
+}
+
+/* Media query per dispositivi mobili */
+@media (max-width: 768px) {
+    #control-panel {
+        width: 250px;
+        max-width: 80vw;
+        transform: translateX(0);
+        opacity: 0.95;
+    }
+    
+    button {
+        width: 36px;
+        height: 36px;
+        font-size: 12px;
+    }
+    
+    #fps-counter, #stats {
+        font-size: 10px;
+    }
+    
+    #instructions {
+        font-size: 10px;
+        max-width: 90%;
+    }
+}
+
+/* Animazioni */
+@keyframes spin {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+@keyframes bounce {
+    0%, 100% {transform: scale(1);}
+    50% {transform: scale(1.1);}
+}
+
+.perfect-hit {animation: bounce 0.5s ease;}
+
+/* Stili fuochi d'artificio */
+.fireworks {
+    position: absolute;
+    z-index: 200;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+}
+
+.particle {
+    position: absolute;
+    will-change: transform, opacity;
+    pointer-events: none;
+}
+
+/* Pannello Colori */
+#colors-panel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--panel-bg);
+    border-radius: 12px;
+    padding: 20px;
+    width: 320px;
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 200;
+    backdrop-filter: blur(var(--panel-blur));
+    box-shadow: 0 8px 24px var(--shadow-color);
+    transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
+    border: 1px solid var(--border-color);
+}
+
+#colors-panel.hidden {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+    pointer-events: none;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.panel-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#close-colors-panel {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+#close-colors-panel:hover {
+    transform: rotate(90deg);
+}
+
+.colors-themes, .colors-custom {
+    margin-bottom: 20px;
+}
+
+.colors-themes h4, .colors-custom h4 {
+    font-size: 16px;
+    margin: 0 0 10px 0;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.theme-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.theme-btn {
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    height: auto;
+}
+
+.theme-btn:hover {
+    background-color: var(--button-hover-bg);
+    transform: translateY(-2px);
+}
+
+.theme-btn.active {
+    background-color: var(--accent-color);
+    font-weight: 600;
+}
+
+.color-slots {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.color-slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.color-slot label {
+    font-size: 12px;
+    text-align: center;
+}
+
+.color-slot input[type="color"] {
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    background: none;
+    transition: transform 0.2s ease;
+}
+
+.color-slot input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+.color-slot input[type="color"]::-webkit-color-swatch {
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+.color-slot input[type="color"]:hover {
+    transform: scale(1.1);
+}
+
+.colors-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.colors-actions button {
+    width: auto;
+    padding: 8px 16px;
+    height: auto;
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+#reset-colors {
+    background-color: #f44336;
+    color: white;
+}
+
+.colors-actions button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-color);
+} 
