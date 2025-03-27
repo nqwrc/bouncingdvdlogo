@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradiente per lo sfondo -->
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#121212" />
+      <stop offset="100%" stop-color="#2a2a2a" />
+    </linearGradient>
+    
+    <!-- Filtro per l'effetto glow -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <!-- Filtro per l'ombra -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.3" />
+    </filter>
+    
+    <!-- Filtri per i fuochi d'artificio -->
+    <filter id="particle-glow-red" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feFlood flood-color="#FF5555" flood-opacity="0.8" result="glow-color"/>
+      <feComposite in="glow-color" in2="blur" operator="in" result="glow"/>
+      <feComposite in="SourceGraphic" in2="glow" operator="over"/>
+    </filter>
+    
+    <filter id="particle-glow-green" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feFlood flood-color="#55FF55" flood-opacity="0.8" result="glow-color"/>
+      <feComposite in="glow-color" in2="blur" operator="in" result="glow"/>
+      <feComposite in="SourceGraphic" in2="glow" operator="over"/>
+    </filter>
+    
+    <filter id="particle-glow-blue" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feFlood flood-color="#5555FF" flood-opacity="0.8" result="glow-color"/>
+      <feComposite in="glow-color" in2="blur" operator="in" result="glow"/>
+      <feComposite in="SourceGraphic" in2="glow" operator="over"/>
+    </filter>
+    
+    <filter id="particle-glow-purple" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feFlood flood-color="#FF55FF" flood-opacity="0.8" result="glow-color"/>
+      <feComposite in="glow-color" in2="blur" operator="in" result="glow"/>
+      <feComposite in="SourceGraphic" in2="glow" operator="over"/>
+    </filter>
+    
+    <filter id="particle-glow-yellow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feFlood flood-color="#FFFF55" flood-opacity="0.8" result="glow-color"/>
+      <feComposite in="glow-color" in2="blur" operator="in" result="glow"/>
+      <feComposite in="SourceGraphic" in2="glow" operator="over"/>
+    </filter>
+    
+    <filter id="particle-glow-cyan" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feFlood flood-color="#55FFFF" flood-opacity="0.8" result="glow-color"/>
+      <feComposite in="glow-color" in2="blur" operator="in" result="glow"/>
+      <feComposite in="SourceGraphic" in2="glow" operator="over"/>
+    </filter>
+  </defs>
+  
+  <!-- Sfondo -->
+  <rect width="800" height="400" fill="url(#bg-gradient)" rx="8" ry="8" />
+  
+  <!-- Griglia stilizzata -->
+  <g stroke="#444444" stroke-width="0.5" opacity="0.2">
+    <g id="vertical-lines">
+      <line x1="100" y1="0" x2="100" y2="400" />
+      <line x1="200" y1="0" x2="200" y2="400" />
+      <line x1="300" y1="0" x2="300" y2="400" />
+      <line x1="400" y1="0" x2="400" y2="400" />
+      <line x1="500" y1="0" x2="500" y2="400" />
+      <line x1="600" y1="0" x2="600" y2="400" />
+      <line x1="700" y1="0" x2="700" y2="400" />
+    </g>
+    <g id="horizontal-lines">
+      <line x1="0" y1="100" x2="800" y2="100" />
+      <line x1="0" y1="200" x2="800" y2="200" />
+      <line x1="0" y1="300" x2="800" y2="300" />
+    </g>
+  </g>
+  
+  <!-- DVD Logo -->
+  <g id="dvd-logo" filter="url(#shadow)">
+    <animateMotion dur="10s" repeatCount="indefinite" path="M100,100 Q300,50 500,150 Q650,230 500,300 Q300,350 150,250 Q50,180 100,100" />
+    <g transform="translate(-131.5, -58.5) scale(1)" fill="#FF5555" fill-rule="evenodd" clip-rule="evenodd">
+      <path d="M98.011 14.485c2.293 6.195 2.595 7.697 2.595 12.906 0 12.38-9.101 23.499-25.287 30.892-12.006 5.484-22.924 7.548-39.914 7.548H7.022l10.634-45.901h25.046l-7.46 31.536h6.744c19.951 0 32.994-8.427 32.994-21.318 0-10.138-9.065-15.663-25.696-15.663H18.861l3.336-14.272h97.062l13.554 42.262 34.13-42.262h57.902c13.127 0 26.473 4.917 33.408 12.311 3.987 4.251 5.772 8.848 5.772 14.867 0 12.417-9.076 23.5-25.298 30.893-12.027 5.482-22.944 7.547-39.904 7.547h-28.382l10.611-45.901h25.07l-7.461 31.536h6.72c8.709 0 15.791-1.195 20.189-3.404 7.862-3.95 12.473-10.187 12.827-17.357.511-10.317-8.848-16.219-25.719-16.219h-31.534l-57.741 65.688-23.679-65.688zm119.256 73.782c-32.262-5.295-85.217-7.175-136.448-4.845-24.932 1.134-47.611 3.902-65.208 7.958-11.236 2.591-15.401 4.911-15.401 8.58 0 4.791 8.39 7.921 31.423 11.726 31.925 5.273 85.05 7.145 136.455 4.81 25.97-1.181 45.512-3.572 65.208-7.981 11.263-2.521 15.392-4.816 15.392-8.554-.001-4.808-8.317-7.904-31.421-11.694m-150.792 21.1H63.718l-12.257-18.652h6.488l6.812 10.706 6.094-10.706h6.649zm28.78.001h-5.91v-18.652h5.91zm23.447-.001h-8.689v-18.652h8.596c6.884 0 12.582 4.188 12.582 9.246 0 5.566-5.097 9.406-12.489 9.406m40.617 0h-14.435v-18.652h14.203v3.337h-8.271v3.963h7.784v3.336h-7.784v4.704h8.502v3.312zm26.278.254c-7.755 0-13.695-4.152-13.695-9.569 0-5.434 5.917-9.569 13.695-9.569 8.131 0 13.785 3.925 13.785 9.569 0 5.639-5.663 9.569-13.785 9.569"/>
+      <path d="M115.366 106.054v-12.003h2.433c4.333 0 7.5 2.293 7.716 5.585.254 3.866-2.971 6.418-8.11 6.418zm77.781-6.163c0 3.659-3.066 6.163-7.551 6.163-4.297 0-7.572-2.741-7.37-6.163.214-3.603 3.133-5.84 7.623-5.84 3.956 0 7.298 2.676 7.298 5.84"/>
+      
+      <!-- Cambia colore del logo -->
+      <animate attributeName="fill" values="#FF5555;#55FF55;#5555FF;#FF55FF;#FFFF55;#55FFFF;#FF5555" dur="8s" repeatCount="indefinite" />
+    </g>
+  </g>
+
+  <!-- Traccia del DVD logo -->
+  <g opacity="0.2">
+    <path d="M100,100 Q300,50 500,150 Q650,230 500,300 Q300,350 150,250 Q50,180 100,100" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="5,5"/>
+  </g>
+  
+  <!-- Fuochi d'artificio nell'angolo destro in alto -->
+  <g id="fireworks-top-right">
+    <g filter="url(#particle-glow-red)">
+      <!-- Raggio 1 -->
+      <g transform="translate(700, 50)">
+        <circle r="0" fill="#FF5555">
+          <animate attributeName="r" values="0;3;1;0" dur="2s" begin="0.5s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="1;0.7;0" dur="2s" begin="0.5s" repeatCount="indefinite" />
+        </circle>
+        
+        <!-- Particelle -->
+        <g>
+          <circle r="2" fill="#FF5555">
+            <animate attributeName="cx" values="0;30;40" dur="2s" begin="0.5s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="0;-20;-35" dur="2s" begin="0.5s" repeatCount="indefinite" />
+            <animate attributeName="r" values="2;3;1;0" dur="2s" begin="0.5s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="1;0.8;0.5;0" dur="2s" begin="0.5s" repeatCount="indefinite" />
+          </circle>
+          
+          <circle r="2" fill="#FF5555">
+            <animate attributeName="cx" values="0;-25;-35" dur="2s" begin="0.5s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="0;-25;-30" dur="2s" begin="0.5s" repeatCount="indefinite" />
+            <animate attributeName="r" values="2;2.5;1;0" dur="2s" begin="0.5s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="1;0.8;0.5;0" dur="2s" begin="0.5s" repeatCount="indefinite" />
+          </circle>
+          
+          <circle r="2" fill="#FF5555">
+            <animate attributeName="cx" values="0;20;25" dur="2s" begin="0.5s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="0;20;25" dur="2s" begin="0.5s" repeatCount="indefinite" />
+            <animate attributeName="r" values="2;3;1;0" dur="2s" begin="0.5s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="1;0.8;0.5;0" dur="2s" begin="0.5s" repeatCount="indefinite" />
+          </circle>
+          
+          <circle r="2" fill="#FF5555">
+            <animate attributeName="cx" values="0;-15;-20" dur="2s" begin="0.5s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="0;15;20" dur="2s" begin="0.5s" repeatCount="indefinite" />
+            <animate attributeName="r" values="2;2.5;1;0" dur="2s" begin="0.5s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="1;0.8;0.5;0" dur="2s" begin="0.5s" repeatCount="indefinite" />
+          </circle>
+          
+          <circle r="2" fill="#FF5555">
+            <animate attributeName="cx" values="0;0;0" dur="2s" begin="0.5s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="0;-35;-45" dur="2s" begin="0.5s" repeatCount="indefinite" />
+            <animate attributeName="r" values="2;3;1;0" dur="2s" begin="0.5s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="1;0.8;0.5;0" dur="2s" begin="0.5s" repeatCount="indefinite" />
+          </circle>
+          
+          <circle r="2" fill="#FF5555">
+            <animate attributeName="cx" values="0;35;45" dur="2s" begin="0.5s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="0;5;10" dur="2s" begin="0.5s" repeatCount="indefinite" />
+            <animate attributeName="r" values="2;3;1;0" dur="2s" begin="0.5s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="1;0.8;0.5;0" dur="2s" begin="0.5s" repeatCount="indefinite" />
+          </circle>
+        </g>
+      </g>
+    </g>
+    
+    <g filter="url(#particle-glow-blue)">
+      <!-- Raggio 2 -->
+      <g transform="translate(700, 50)">
+        <circle r="0" fill="#5555FF">
+          <animate attributeName="r" values="0;3;1;0" dur="2s" begin="4s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="1;0.7;0" dur="2s" begin="4s" repeatCount="indefinite" />
+        </circle>
+        
+        <!-- Particelle -->
+        <g>
+          <circle r="2" fill="#5555FF">
+            <animate attributeName="cx" values="0;35;45" dur="2s" begin="4s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="0;-15;-20" dur="2s" begin="4s" repeatCount="indefinite" />
+            <animate attributeName="r" values="2;3;1;0" dur="2s" begin="4s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="1;0.8;0.5;0" dur="2s" begin="4s" repeatCount="indefinite" />
+          </circle>
+          
+          <circle r="2" fill="#5555FF">
+            <animate attributeName="cx" values="0;-30;-40" dur="2s" begin="4s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="0;-20;-25" dur="2s" begin="4s" repeatCount="indefinite" />
+            <animate attributeName="r" values="2;2.5;1;0" dur="2s" begin="4s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="1;0.8;0.5;0" dur="2s" begin="4s" repeatCount="indefinite" />
+          </circle>
+          
+          <circle r="2" fill="#5555FF">
+            <animate attributeName="cx" values="0;15;20" dur="2s" begin="4s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="0;25;35" dur="2s" begin="4s" repeatCount="indefinite" />
+            <animate attributeName="r" values="2;3;1;0" dur="2s" begin="4s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="1;0.8;0.5;0" dur="2s" begin="4s" repeatCount="indefinite" />
+          </circle>
+          
+          <circle r="2" fill="#5555FF">
+            <animate attributeName="cx" values="0;-20;-25" dur="2s" begin="4s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="0;15;25" dur="2s" begin="4s" repeatCount="indefinite" />
+            <animate attributeName="r" values="2;2.5;1;0" dur="2s" begin="4s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="1;0.8;0.5;0" dur="2s" begin="4s" repeatCount="indefinite" />
+          </circle>
+          
+          <circle r="2" fill="#5555FF">
+            <animate attributeName="cx" values="0;0;0" dur="2s" begin="4s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="0;-40;-50" dur="2s" begin="4s" repeatCount="indefinite" />
+            <animate attributeName="r" values="2;3;1;0" dur="2s" begin="4s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="1;0.8;0.5;0" dur="2s" begin="4s" repeatCount="indefinite" />
+          </circle>
+        </g>
+      </g>
+    </g>
+  </g>
+  
+  <!-- Fuochi d'artificio nell'angolo sinistro in basso -->
+  <g id="fireworks-bottom-left">
+    <g filter="url(#particle-glow-yellow)">
+      <!-- Raggio 1 -->
+      <g transform="translate(100, 350)">
+        <circle r="0" fill="#FFFF55">
+          <animate attributeName="r" values="0;3;1;0" dur="2s" begin="2s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="1;0.7;0" dur="2s" begin="2s" repeatCount="indefinite" />
+        </circle>
+        
+        <!-- Particelle -->
+        <g>
+          <circle r="2" fill="#FFFF55">
+            <animate attributeName="cx" values="0;25;35" dur="2s" begin="2s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="0;-25;-35" dur="2s" begin="2s" repeatCount="indefinite" />
+            <animate attributeName="r" values="2;3;1;0" dur="2s" begin="2s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="1;0.8;0.5;0" dur="2s" begin="2s" repeatCount="indefinite" />
+          </circle>
+          
+          <circle r="2" fill="#FFFF55">
+            <animate attributeName="cx" values="0;-25;-35" dur="2s" begin="2s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="0;-25;-30" dur="2s" begin="2s" repeatCount="indefinite" />
+            <animate attributeName="r" values="2;2.5;1;0" dur="2s" begin="2s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="1;0.8;0.5;0" dur="2s" begin="2s" repeatCount="indefinite" />
+          </circle>
+          
+          <circle r="2" fill="#FFFF55">
+            <animate attributeName="cx" values="0;25;30" dur="2s" begin="2s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="0;10;15" dur="2s" begin="2s" repeatCount="indefinite" />
+            <animate attributeName="r" values="2;3;1;0" dur="2s" begin="2s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="1;0.8;0.5;0" dur="2s" begin="2s" repeatCount="indefinite" />
+          </circle>
+          
+          <circle r="2" fill="#FFFF55">
+            <animate attributeName="cx" values="0;-20;-25" dur="2s" begin="2s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="0;15;20" dur="2s" begin="2s" repeatCount="indefinite" />
+            <animate attributeName="r" values="2;2.5;1;0" dur="2s" begin="2s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="1;0.8;0.5;0" dur="2s" begin="2s" repeatCount="indefinite" />
+          </circle>
+        </g>
+      </g>
+    </g>
+    
+    <g filter="url(#particle-glow-green)">
+      <!-- Raggio 2 -->
+      <g transform="translate(100, 350)">
+        <circle r="0" fill="#55FF55">
+          <animate attributeName="r" values="0;3;1;0" dur="2s" begin="7s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="1;0.7;0" dur="2s" begin="7s" repeatCount="indefinite" />
+        </circle>
+        
+        <!-- Particelle -->
+        <g>
+          <circle r="2" fill="#55FF55">
+            <animate attributeName="cx" values="0;30;35" dur="2s" begin="7s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="0;-15;-20" dur="2s" begin="7s" repeatCount="indefinite" />
+            <animate attributeName="r" values="2;3;1;0" dur="2s" begin="7s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="1;0.8;0.5;0" dur="2s" begin="7s" repeatCount="indefinite" />
+          </circle>
+          
+          <circle r="2" fill="#55FF55">
+            <animate attributeName="cx" values="0;-20;-30" dur="2s" begin="7s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="0;-20;-25" dur="2s" begin="7s" repeatCount="indefinite" />
+            <animate attributeName="r" values="2;2.5;1;0" dur="2s" begin="7s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="1;0.8;0.5;0" dur="2s" begin="7s" repeatCount="indefinite" />
+          </circle>
+          
+          <circle r="2" fill="#55FF55">
+            <animate attributeName="cx" values="0;20;30" dur="2s" begin="7s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="0;15;20" dur="2s" begin="7s" repeatCount="indefinite" />
+            <animate attributeName="r" values="2;3;1;0" dur="2s" begin="7s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="1;0.8;0.5;0" dur="2s" begin="7s" repeatCount="indefinite" />
+          </circle>
+          
+          <circle r="2" fill="#55FF55">
+            <animate attributeName="cx" values="0;-25;-30" dur="2s" begin="7s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="0;15;20" dur="2s" begin="7s" repeatCount="indefinite" />
+            <animate attributeName="r" values="2;2.5;1;0" dur="2s" begin="7s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="1;0.8;0.5;0" dur="2s" begin="7s" repeatCount="indefinite" />
+          </circle>
+        </g>
+      </g>
+    </g>
+  </g>
+  
+  <!-- Interfaccia utente minimalista -->
+  <g id="ui-elements" opacity="0.9">
+    <!-- Pannello di controllo -->
+    <rect x="680" y="100" width="100" height="200" rx="8" ry="8" fill="#2a2a2a" opacity="0.8" filter="url(#shadow)" />
+    
+    <!-- Pulsanti -->
+    <circle cx="730" cy="130" r="12" fill="#444" stroke="#555" stroke-width="1" />
+    <circle cx="730" cy="170" r="12" fill="#444" stroke="#555" stroke-width="1" />
+    <circle cx="730" cy="210" r="12" fill="#444" stroke="#555" stroke-width="1" />
+    <circle cx="730" cy="250" r="12" fill="#FF5555" stroke="#FF7777" stroke-width="1" />
+    
+    <!-- Slider -->
+    <rect x="700" y="290" width="60" height="4" rx="2" ry="2" fill="#444" />
+    <circle cx="720" cy="290" r="6" fill="#FF5555" stroke="#222" stroke-width="1" />
+    
+    <!-- FPS Counter -->
+    <rect x="20" y="20" width="80" height="25" rx="4" ry="4" fill="#2a2a2a" opacity="0.8" />
+    <text x="30" y="37" font-family="Arial" font-size="14" fill="#ffffff">FPS: 60</text>
+    
+    <!-- Stats -->
+    <rect x="20" y="55" width="120" height="25" rx="4" ry="4" fill="#2a2a2a" opacity="0.8" />
+    <text x="30" y="72" font-family="Arial" font-size="14" fill="#ffffff">Rimbalzi: 42</text>
+    
+    <!-- Perfect Hit Counter -->
+    <rect x="20" y="90" width="120" height="25" rx="4" ry="4" fill="#2a2a2a" opacity="0.8" />
+    <text x="30" y="107" font-family="Arial" font-size="14" fill="#ffffff">Centrato: 2</text>
+  </g>
+  
+  <!-- Titolo -->
+  <text x="400" y="380" font-family="Arial" font-size="16" fill="#ffffff" text-anchor="middle" opacity="0.8">Bouncing DVD Logo - Ultimate Edition</text>
+</svg> 

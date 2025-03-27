@@ -2,7 +2,8 @@
 
 Una ricreazione avanzata dell'animazione classica del logo DVD che rimbalza, migliorata con effetti moderni e molte nuove funzionalità.
 
-![DVD Logo Animation](https://i.imgur.com/example.gif)
+## Demo
+![Bouncing DVD Logo Animation](assets/demo.svg)
 
 ## Installazione e Avvio
 
